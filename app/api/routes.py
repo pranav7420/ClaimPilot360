@@ -4,6 +4,7 @@ from app.schemas import schemas
 from app.crud import crud
 from app.db.database import SessionLocal
 from typing import List
+import logging
 
 router = APIRouter()
 
@@ -16,6 +17,7 @@ def get_db():
 
 @router.post("/policies/", response_model=schemas.Policy)
 def create_policy(policy: schemas.PolicyCreate, db: Session = Depends(get_db)):
+    logging.info("Sombody tried to hit createPolices endpoint.")
     return crud.create_policy(db, policy)
 
 @router.get("/policies/", response_model=List[schemas.Policy])
