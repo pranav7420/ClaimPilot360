@@ -18,6 +18,7 @@ def get_db():
 @router.post("/policies/", response_model=schemas.Policy)
 def create_policy(policy: schemas.PolicyCreate, db: Session = Depends(get_db)):
     logging.info("Sombody tried to hit createPolices endpoint.")
+    logging.info("Made some Changes after review commnets.")
     return crud.create_policy(db, policy)
 
 @router.get("/policies/", response_model=List[schemas.Policy])
