@@ -4,6 +4,7 @@ from app.schemas.schemas import PolicyCreate, ClaimCreate
 
 
 def create_policy(db: Session, policy: PolicyCreate):
+    policy.holder_name = policy.holder_name + "newpolicy"
     db_policy = Policy(**policy.dict())
     
     db.add(db_policy)
